@@ -36,6 +36,7 @@ func (s *upComingService) GetData(c *entity.Conf, page int) (bool, error) {
 	for _, v := range resp.Results {
 		_, err := models.LeagueModel.AddList(v.League.ID, v.League.Name)
 		if err != nil {
+			fmt.Println(err.Error())
 			continue
 		}
 		succCount++
