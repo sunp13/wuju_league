@@ -31,6 +31,10 @@ func init() {
 }
 
 func main() {
+	// 初始化雪花算法
+	if err := services.SnowFlakeService.Setup(); err != nil {
+		log.Fatal().Str("err", err.Error()).Send()
+	}
 	for {
 		// 最大抓取50页, 如果到头了提前退出抓完一轮在抓一抡
 		for i := 1; i < 50; i++ {
