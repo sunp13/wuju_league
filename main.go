@@ -32,6 +32,7 @@ func init() {
 
 func main() {
 	for {
+		// 最大抓取50页, 如果到头了提前退出抓完一轮在抓一抡
 		for i := 1; i < 50; i++ {
 			end, err := services.UpComingService.GetData(&conf, i)
 			if err != nil {

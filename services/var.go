@@ -1,5 +1,6 @@
 package services
 
 var (
-	UpComingService upComingService
+	UpComingService  upComingService
+	SnowFlakeService snowFlakeService
 )

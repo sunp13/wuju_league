@@ -34,9 +34,13 @@ func (s *upComingService) GetData(c *entity.Conf, page int) (bool, error) {
 	}
 	succCount := 0
 	for _, v := range resp.Results {
-		_, err := models.LeagueModel.AddList(v.League.ID, v.League.Name)
+		_, err := models.LeagueModel.AddList(
+			SnowFlakeService.NextID(),
+			v.League.ID,
+			v.League.Name,
+		)
 		if err != nil {
-			fmt.Println(err.Error())
+			log.Error().Str("err", err.Error()).Send()
 			continue
 		}
 		succCount++
